@@ -11,7 +11,6 @@ import { AuthGuard } from './auth.guard';
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
-  //should be my AuthGuardService below but doesnt render when doing that
   { path: 'dashboard', component: BusinessCardsComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent }
 
