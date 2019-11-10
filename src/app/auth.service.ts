@@ -52,9 +52,12 @@ SignIn(email: string, password: string) {
     .signInWithEmailAndPassword(email, password)
     .then(res => {
       console.log('Successfully signed in!');
+      this.router.navigate(['/dashboard']);
     })
     .catch(err => {
       console.log('Something is wrong:',err.message);
+      this.router.navigate(['/login']);
+
     });
 }
 
@@ -67,12 +70,8 @@ isLoggedIn() {
   }
 
   logout() {
+    console.log("signing out");
     this.afAuth.auth.signOut()
-    .then((res) => this.router.navigate(['/']));
+    .then((res) => this.router.navigate(['login']));
   }
 }
-
-
-
-//need to observe user info if logged in/out
-//then option for signing in and out with email and password

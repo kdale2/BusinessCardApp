@@ -1,4 +1,7 @@
+<app-login></app-login>
 <router-outlet>
+
+  <!-- perhaps move nav bar into its own compoenent/route after logging in -->
 
   <h1 class = 'nav'>Navigation Bar</h1>
   <nav class ='nav'>
@@ -6,13 +9,13 @@
     <span>
       <a routerLink = "/login" routerLinkActive = "active" class = "button">Login here</a>
     </span>
-    <br><br>
+<!--     <br><br>
     <span>
     <a routerLink = "/not-found" routerLinkActive = "active" class= "button">Page Not Found</a>
-    </span>
+    </span> -->
     <br><br>
     <span>
-      <a routerLink = "/dashboard" routerLinkActive = "active" class= "button">View cards</a>
+      <a routerLink = "/dashboard" routerLinkActive = "active" class= "button">View business cards</a>
       </span>
     <br>
   </nav>

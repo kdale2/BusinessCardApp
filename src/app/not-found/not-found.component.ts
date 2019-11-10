@@ -12,6 +12,7 @@ export class NotFoundComponent implements OnInit {
   constructor() { 
 
     this.error = "Page not found";
+    console.log("Page not found");
     
   }
 

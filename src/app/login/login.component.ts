@@ -21,7 +21,11 @@ export class LoginComponent implements OnInit {
   }
 
 
-  signIn() {
-    this.authService.SignIn("chandlergegg@gmail.com", "5DeepBreaths!")
+  signIn(email: string, password: string) {
+    this.authService.SignIn(email, password);
+  }
+
+  signOut() {
+    this.authService.logout();
   }
 }

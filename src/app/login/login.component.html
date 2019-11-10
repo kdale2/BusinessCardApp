@@ -1,6 +1,18 @@
-<p>This is where I will put the login section</p>
-
-<div class="form-group">
-    <button type="buton" class="btn btn-block" (click)="signIn()">
-      Login with Facebook
-    </button>
+<div class="container">
+      <h1>Log In With Email</h1>
+        <div class="formFormat">
+          <label for="id">email address: </label>
+          <input type="text" #emailInput class="form-control" name = "id">
+        </div>
+  
+        <div class="formFormat">
+          <label for="description">password: </label>
+          <input type="text" #passwordInput class="form-control" id="description">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success" (click)='signIn(emailInput.value, passwordInput.value)'>
+          login</button>
+<br>
+          <button type="submit" class="btn btn-success" (click)='signOut()'>
+            log out</button>
+    </div>
