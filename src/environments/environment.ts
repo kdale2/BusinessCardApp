@@ -11,7 +11,7 @@ export const environment = {
     projectId: "businesscards-4e744",
     storageBucket: "businesscards-4e744.appspot.com",
     messagingSenderId: "952718174883",
-  }
+  },
 };
 
 /*
