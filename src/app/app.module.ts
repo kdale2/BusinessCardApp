@@ -32,7 +32,7 @@ import { BusinessCardService } from './business-card.service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
   ],
   providers: [AuthService, AuthGuard, BusinessCardService],
   bootstrap: [AppComponent]
