@@ -17,8 +17,8 @@ export class BusinessCardService {
 
   getCards(): BusinessCardComponent[] {
 
-    this.cards = [new BusinessCardComponent('Kris'),
-                  new BusinessCardComponent('Dale')];
+    this.cards = [new BusinessCardComponent('BusinessCard1'),
+                  new BusinessCardComponent('BusinessCard2')];
     return this.cards;
     
 
