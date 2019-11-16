@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BusinessCardService } from '../business-card.service';
+
 
 @Component({
   selector: 'app-not-found',
@@ -8,15 +10,25 @@ import { Component, OnInit } from '@angular/core';
 export class NotFoundComponent implements OnInit {
 
   error: String;
+  name: String;
 
-  constructor() { 
+  constructor(private businessCardService: BusinessCardService) { 
 
     this.error = "Page not found";
     console.log("Page not found");
+    this.name = this.businessCardService.getName();
+
     
   }
 
   ngOnInit() {
+  }
+
+  getNames() {
+
+    console.log("getting naem from database?");
+    this.name = this.businessCardService.getName();
+
   }
 
 }

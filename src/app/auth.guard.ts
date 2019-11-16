@@ -25,6 +25,7 @@ export class AuthGuard implements CanActivate {
         tap((loggedIn) => {
           if (!loggedIn) {
             console.log('access denied');
+            alert("Not authorized. Please sign in to continue.")
             this.router.navigate(['/login']);
           }
         }),
