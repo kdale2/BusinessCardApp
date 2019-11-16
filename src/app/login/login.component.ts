@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
 
 
   signIn(email: string, password: string) {
+    console.log("signing you in");
     this.authService.SignIn(email, password);
   }
 
