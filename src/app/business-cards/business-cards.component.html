@@ -1,8 +1,28 @@
-<p>business-cards works!</p>
+<!-- <h1>Business Cards</h1>
 
 <p>
-    <li *ngFor="let card of businessCards">
-    {{card.name}}
-    </li>
-
+    <li *ngFor="let card of businessCards">{{card.name}}</li>
 </p>
+ -->
+<table class = "table">
+    <thead>
+        <tr>
+            <th>Business Cards</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let card of businessCards">
+
+            <td>{{card.payload.doc.data().name}}</td>
+            <td>{{card.payload.doc.data().company}}</td>
+            
+            <td><span 
+                *ngFor="let card1 of card.payload.doc.data().businessCards">
+               {{ card1 }}
+              </span>
+           </td>
+        
+        
+        </tr>
+    </tbody>
+</table>

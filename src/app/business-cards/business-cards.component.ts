@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BusinessCardService } from '../business-card.service';
 import { BusinessCardComponent } from '../business-card/business-card.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-business-cards',
@@ -9,19 +10,23 @@ import { BusinessCardComponent } from '../business-card/business-card.component'
 })
 export class BusinessCardsComponent implements OnInit {
 
-
-  businessCards: BusinessCardComponent[];
-
   constructor(private businessCardService: BusinessCardService) { 
-
+/* 
     console.log("business cards component");
-
-    this.businessCards = businessCardService.getCards();
+    this.businessCards = businessCardService.getCards(); */
 
   }
 
-  ngOnInit() {
+  ngOnInit() { 
+    this.getBusCards();
+    
   }
 
+  businessCards;
 
-}
+  getBusCards = () =>
+    this.businessCardService
+      .getCards()
+      .subscribe(res => (this.businessCards = res));
+  } 
+

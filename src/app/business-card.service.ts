@@ -10,42 +10,58 @@ export class BusinessCardService {
 
   //create read update destroy
 
- 
   cards: BusinessCardComponent[];
+  name: string;
 
   constructor(private firestore: AngularFirestore) { }
 
-  getCards(): BusinessCardComponent[] {
+  getCards() {
 
-    this.cards = [new BusinessCardComponent('BusinessCard1'),
+/*     this.cards = [new BusinessCardComponent('BusinessCard1'),
                   new BusinessCardComponent('BusinessCard2')];
-    return this.cards;
-    
+    return this.cards; */
+
+   return this.firestore.collection("businessCards").snapshotChanges(); 
+   
+  }
+
+  getName(): string {
+    this.name = "hello";
+    return this.name;
+  }
+
+  createBusinessCard(data) {
+
+    console.log("creating a business card");
+
+    return new Promise<any>((resolve, reject) => {
+      this.firestore
+        .collection("businessCards")
+        .add(data)
+        .then(res => {}, err => reject(err));
+    });
+  }
+
+  updateBusinessCard(data) {
+
+    console.log("updating a business card");
+
+    return this.firestore
+      .collection("businessCards")
+      .doc(data.payload.doc.id)
+      .set({completed: true}, {merge:true});
 
   }
 
-
-  createBusinessCard() {
-
-    //to do
-    console.log("Creating a business card");
-
-  }
-
-  updateBusinessCard() {
-
-    //to do
-    console.log("Updating a business card");
-
-  }
-
-  deleteBusinessCard() {
+  deleteBusinessCard(data) {
 
     //to do
     console.log("Deleting a business card");
 
+    return this.firestore
+      .collection("businessCards")
+      .doc(data.payload.doc.id)
+      .delete();
+
   }
-
-
-
 }
