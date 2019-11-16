@@ -16,19 +16,11 @@ export class NotFoundComponent implements OnInit {
 
     this.error = "Page not found";
     console.log("Page not found");
-    this.name = this.businessCardService.getName();
 
     
   }
 
   ngOnInit() {
-  }
-
-  getNames() {
-
-    console.log("getting naem from database?");
-    this.name = this.businessCardService.getName();
-
   }
 
 }

@@ -25,11 +25,6 @@ export class BusinessCardService {
    
   }
 
-  getName(): string {
-    this.name = "hello";
-    return this.name;
-  }
-
   createBusinessCard(data) {
 
     console.log("creating a business card");
