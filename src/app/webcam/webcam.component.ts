@@ -137,6 +137,4 @@ export class WebcamComponent implements OnInit {
       });
      }
   }
-
-
 }

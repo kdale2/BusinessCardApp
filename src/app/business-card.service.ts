@@ -33,19 +33,15 @@ export class BusinessCardService {
    
   }
 
-  //need to actually take in the correct data on these and get that into firebase
-
   createBusinessCard(businessCard: BusinessCardComponent) {
    
     console.log("creating a business card");
-
     this.businessCard = businessCard;
-
     console.log("in bus card service: " + this.businessCard.firstName);
-    console.log("buscardcollection: " + this.busCardCollection.get);
 
     //this is successfully pushing to firebase
-    this.firestore.collection('businessCards').add({name: this.businessCard.firstName, company: this.businessCard.company});
+    this.firestore.collection('businessCards')
+      .add({name: this.businessCard.firstName, company: this.businessCard.company});
 
 /*     return new Promise<any>((resolve, reject) => {
       this.firestore

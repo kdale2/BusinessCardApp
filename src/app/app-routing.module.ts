@@ -16,8 +16,6 @@ const routes: Routes = [
   { path: 'webcam', component: WebcamComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent }
 
-
-
 ];
 
 @NgModule({
