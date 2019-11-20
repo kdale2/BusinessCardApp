@@ -15,14 +15,45 @@
 
             <td>{{card.payload.doc.data().name}}</td>
             <td>{{card.payload.doc.data().company}}</td>
+            <td>{{card.payload.doc.data().phone}}</td>
             
-            <td><span 
+<!--       <td><span 
                 *ngFor="let card1 of card.payload.doc.data().businessCards">
                {{ card1 }}
               </span>
-           </td>
+           </td> -->
         
         
         </tr>
     </tbody>
 </table>
+<br>
+<div class="container">
+        <h1>Add a business card</h1>
+          <div class="formFormat">
+            <label for="id">name: </label>
+            <input type="text" #nameInput class="form-control" name = "name">
+          </div>
+    
+          <div class="formFormat">
+            <label for="company">company: </label>
+            <input type="text" #companyInput class="form-control" id="company">
+          </div>
+
+          <div class="formFormat">
+            <label for="id">position: </label>
+            <input type="text" #positionInput class="form-control" name = "position">
+          </div>
+
+          <div class="formFormat">
+            <label for="id">phone: </label>
+            <input type="text" #phoneInput class="form-control" name = "phoneNumber">
+          </div>
+
+
+          <br>
+          <button type="submit" class="btn btn-success" (click)='addCard(nameInput.value, companyInput.value)'>
+            Add to List</button>
+      </div>
+
+<br>

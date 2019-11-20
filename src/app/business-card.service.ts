@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { BusinessCardComponent } from './business-card/business-card.component';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,17 @@ export class BusinessCardService {
 
   //create read update destroy
 
-  cards: BusinessCardComponent[];
-  name: string;
+  private dbPath = 'businessCards';
+  cards: Observable<BusinessCardComponent[]>;
+  busCardCollection: AngularFirestoreCollection<BusinessCardComponent>;
+  businessCard: BusinessCardComponent;
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) { 
+
+    this.busCardCollection = firestore.collection<BusinessCardComponent>(this.dbPath);
+    this.cards =  this.busCardCollection.valueChanges();
+
+  }
 
   getCards() {
 
@@ -25,16 +33,23 @@ export class BusinessCardService {
    
   }
 
-  createBusinessCard(data) {
-
+  createBusinessCard(businessCard: BusinessCardComponent) {
+   
     console.log("creating a business card");
+    this.businessCard = businessCard;
+    console.log("in bus card service: " + this.businessCard.firstName);
 
-    return new Promise<any>((resolve, reject) => {
+    //this is successfully pushing to firebase
+    this.firestore.collection('businessCards')
+      .add({name: this.businessCard.firstName, company: this.businessCard.company});
+
+/*     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection("businessCards")
-        .add(data)
+        .add(this.businessCard)
         .then(res => {}, err => reject(err));
-    });
+    });  */
+
   }
 
   updateBusinessCard(data) {

@@ -17,6 +17,9 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { BusinessCardService } from './business-card.service';
 
+import {WebcamModule} from 'ngx-webcam';
+import { WebcamComponent } from './webcam/webcam.component';
+
 
 @NgModule({
   declarations: [
@@ -24,9 +27,11 @@ import { BusinessCardService } from './business-card.service';
     BusinessCardComponent,
     BusinessCardsComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    WebcamComponent
   ],
   imports: [
+    WebcamModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
