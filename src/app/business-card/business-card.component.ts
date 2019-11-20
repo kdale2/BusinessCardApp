@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BusinessCardComponent implements OnInit {
 
-  name: string;
+  firstName: string;
+  company: string;
 
-  constructor(name: string) {
-      this.name = name;
+  constructor(name: string, company: string) {
+      this.firstName = name;
+      this.company = company;
    }
 
   ngOnInit() {

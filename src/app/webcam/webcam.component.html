@@ -1,0 +1,55 @@
+<p>Webcam</p>
+
+<div>
+<webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+[allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+[videoOptions]="videoOptions"
+[imageQuality]="1"
+(cameraSwitched)="cameraWasSwitched($event)"
+(initError)="handleInitError($event)"
+></webcam>
+
+<br/>
+<button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
+<button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
+<br/>
+</div>
+
+
+
+
+<div class="snapshot" *ngIf="webcamImage">
+    <h2>Captured image successfully.</h2>
+    <img [src]="webcamImage.imageAsDataUrl"/>
+</div>
+
+<div>
+    <button (click)="save()"> Save </button>
+</div>
+
+<!-- <div>
+    <button (click)="convertToBase64()"> Base 64 </button>
+  </div> -->
+
+<!--   
+  <h4 *ngIf="errors.length > 0">Messages:</h4>
+  <ul *ngFor="let error of errors">
+    <li>{{error | json}}</li>
+  </ul> -->
+
+
+<!-- 
+<br>
+
+<div>
+    <button (click)="triggerSnapshot()"> Base 64 </button>
+</div>
+
+  <br>
+<div><button type="submit" class="btn btn-success" (click)='convertToBase64()'>
+    Add my card</button>
+</div>
+
+<div *ngIf="base64">
+    <img [src]="base64">
+  </div> -->
