@@ -1,4 +1,5 @@
-<p>Webcam</p>
+<h1>Webcam</h1>
+<p>Please place your card in front of webcam.</p>
 
 <div>
 <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
@@ -36,3 +37,33 @@
 <div *ngIf="base64">
     <img [src]="base64">
   </div> -->
+
+  <br><br>
+
+  <div class="container">
+    <h1>Add or adjust your card information</h1>
+      <div class="formFormat">
+        <label for="id">name: </label>
+        <input type="text" #nameInput class="form-control" name = "firstName">
+      </div>
+
+      <div class="formFormat">
+        <label for="company">company: </label>
+        <input type="text" #companyInput class="form-control" id="company">
+      </div>
+
+      <div class="formFormat">
+        <label for="id">position: </label>
+        <input type="text" #positionInput class="form-control" name = "position">
+      </div>
+
+      <div class="formFormat">
+        <label for="id">phone: </label>
+        <input type="text" #phoneInput class="form-control" name = "phoneNumber">
+      </div>
+
+
+      <br>
+      <button type="submit" class="btn btn-success" (click)='addCard(nameInput.value, companyInput.value, phoneInput.value)'>
+        Add to List</button>
+  </div>

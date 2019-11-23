@@ -5,6 +5,8 @@ import {WebcamImage} from 'ngx-webcam';
 import {WebcamUtil} from 'ngx-webcam';
 import {WebcamInitError} from 'ngx-webcam';
 import domtoimage from 'dom-to-image';
+import { BusinessCardComponent } from '../business-card/business-card.component';
+import { BusinessCardService } from '../business-card.service';
 
 @Component({
   selector: 'app-webcam',
@@ -12,6 +14,9 @@ import domtoimage from 'dom-to-image';
   styleUrls: ['./webcam.component.css']
 })
 export class WebcamComponent implements OnInit {
+
+    businessCard: BusinessCardComponent;
+    busCardService: BusinessCardService;
 
     // toggle webcam on/off
     public showWebcam = true;
@@ -32,13 +37,22 @@ export class WebcamComponent implements OnInit {
     base64: string;
     imageUrl;
 
-  constructor() { }
+  constructor(busCardService: BusinessCardService) { this.busCardService = busCardService }
 
   ngOnInit() {
     WebcamUtil.getAvailableVideoInputs()
     .then((mediaDevices: MediaDeviceInfo[]) => {
       this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
     });
+  }
+
+  addCard(nameInput: string, companyInput: string, phoneInput: string) {
+    console.log("Adding a new card");
+    this.businessCard = new BusinessCardComponent(nameInput, companyInput, phoneInput);
+    console.log("new business card name: " + this.businessCard.firstName);
+
+    //right now this is only sending over the input for 'name' field and not an object
+    this.busCardService.createBusinessCard(this.businessCard);
   }
 
   public triggerSnapshot(): void {
@@ -89,10 +103,6 @@ export class WebcamComponent implements OnInit {
     }
 
     return result;
-  }
-
-  addCard() {
-    console.log("To do: Add card from webcam capture");
   }
 
   public save(){

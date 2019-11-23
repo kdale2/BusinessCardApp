@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class BusinessCardsComponent implements OnInit {
 
   businessCard: BusinessCardComponent;
+  key: string;
 
   constructor(private businessCardService: BusinessCardService) { 
 /* 
@@ -31,14 +32,13 @@ export class BusinessCardsComponent implements OnInit {
       .getCards()
       .subscribe(res => (this.businessCards = res));
 
-    
-  addCard(nameInput: string, companyInput: string) {
-    console.log("Adding a new card");
-    this.businessCard = new BusinessCardComponent(nameInput, companyInput);
-    console.log("new business card name: " + this.businessCard.firstName);
 
-    //right now this is only sending over the input for 'name' field and not an object
-    this.businessCardService.createBusinessCard(this.businessCard);
-  }
+  deleteCard(businessCard: BusinessCardComponent, id: string) {
+    this.key = id;
+    this.businessCard = businessCard;
+    console.log("deleting card");
+    console.log("detelting " + this.businessCard.firstName);
+    this.businessCardService.deleteBusinessCard(this.businessCard, this.key);
+    }
   } 
 

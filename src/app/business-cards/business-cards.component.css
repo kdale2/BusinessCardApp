@@ -5,3 +5,13 @@
 .container {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
 }
+
+.cards {
+
+    width: 100px;
+    max-width: 150px;
+    height: 100px;
+    border: 5px solid black;
+    box-sizing: border-box;
+
+}

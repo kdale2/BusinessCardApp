@@ -9,10 +9,12 @@ export class BusinessCardComponent implements OnInit {
 
   firstName: string;
   company: string;
+  phone: string;
 
-  constructor(name: string, company: string) {
+  constructor(name: string, company: string, phone: string) {
       this.firstName = name;
       this.company = company;
+      this.phone = phone;
    }
 
   ngOnInit() {

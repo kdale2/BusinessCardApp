@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { BusinessCardComponent } from './business-card/business-card.component';
 import { Observable } from 'rxjs';
+import { idTokenResult } from '@angular/fire/auth-guard';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class BusinessCardService {
   cards: Observable<BusinessCardComponent[]>;
   busCardCollection: AngularFirestoreCollection<BusinessCardComponent>;
   businessCard: BusinessCardComponent;
+  key: string;
 
   constructor(private firestore: AngularFirestore) { 
 
@@ -41,7 +43,9 @@ export class BusinessCardService {
 
     //this is successfully pushing to firebase
     this.firestore.collection('businessCards')
-      .add({name: this.businessCard.firstName, company: this.businessCard.company});
+      .add({firstName: this.businessCard.firstName, company: this.businessCard.company, phone: this.businessCard.phone});
+
+
 
 /*     return new Promise<any>((resolve, reject) => {
       this.firestore
@@ -63,15 +67,21 @@ export class BusinessCardService {
 
   }
 
-  deleteBusinessCard(data) {
+  deleteBusinessCard(businessCard: BusinessCardComponent, key: string) {
 
+
+    this.key = key;
     //to do
-    console.log("Deleting a business card");
+    console.log("Deleting a business card - service");
+    this.businessCard = businessCard;
+    console.log("in the service and deleting " + this.businessCard.firstName);
 
-    return this.firestore
-      .collection("businessCards")
-      .doc(data.payload.doc.id)
-      .delete();
+
+    //this works but only for specific key
+    this.firestore.collection("businessCards").doc(key).delete();
+
+
+    //implement delete functionality
 
   }
 }

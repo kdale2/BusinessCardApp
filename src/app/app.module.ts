@@ -19,6 +19,7 @@ import { BusinessCardService } from './business-card.service';
 
 import {WebcamModule} from 'ngx-webcam';
 import { WebcamComponent } from './webcam/webcam.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { WebcamComponent } from './webcam/webcam.component';
     BusinessCardsComponent,
     LoginComponent,
     NotFoundComponent,
-    WebcamComponent
+    WebcamComponent,
+    NavbarComponent
   ],
   imports: [
     WebcamModule,

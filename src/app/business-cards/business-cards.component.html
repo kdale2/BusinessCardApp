@@ -11,12 +11,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let card of businessCards">
+      <div>
+        <tr class = "cards" *ngFor="let card of businessCards">
 
-            <td>{{card.payload.doc.data().name}}</td>
-            <td>{{card.payload.doc.data().company}}</td>
-            <td>{{card.payload.doc.data().phone}}</td>
-            
+            <td>Name: {{card.payload.doc.data().firstName}}</td>
+            <td>Company: {{card.payload.doc.data().company}}</td>
+            <td>Phone #: {{card.payload.doc.data().phone}}</td>
+            <button (click) = 'deleteCard(card, card.payload.doc.id)'>Delete card</button>
 <!--       <td><span 
                 *ngFor="let card1 of card.payload.doc.data().businessCards">
                {{ card1 }}
@@ -25,10 +26,11 @@
         
         
         </tr>
+      </div>
     </tbody>
 </table>
 <br>
-<div class="container">
+<!-- <div class="container">
         <h1>Add a business card</h1>
           <div class="formFormat">
             <label for="id">name: </label>
@@ -54,6 +56,6 @@
           <br>
           <button type="submit" class="btn btn-success" (click)='addCard(nameInput.value, companyInput.value)'>
             Add to List</button>
-      </div>
+      </div> -->
 
 <br>
