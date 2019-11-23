@@ -3,7 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "dist/business-card-app",
+    "public": "dist/BusinessCardApp",
     "ignore": [
       "firebase.json",
       "**/.*",

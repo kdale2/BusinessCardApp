@@ -46,9 +46,9 @@ export class WebcamComponent implements OnInit {
     });
   }
 
-  addCard(nameInput: string, companyInput: string, phoneInput: string) {
+  addCard(firstNameInput: string, lastNameInput: string, companyInput: string, positionInput: string, addressInput: string, phoneInput: string) {
     console.log("Adding a new card");
-    this.businessCard = new BusinessCardComponent(nameInput, companyInput, phoneInput);
+    this.businessCard = new BusinessCardComponent(firstNameInput, lastNameInput, companyInput,positionInput, addressInput, phoneInput);
     console.log("new business card name: " + this.businessCard.firstName);
 
     //right now this is only sending over the input for 'name' field and not an object

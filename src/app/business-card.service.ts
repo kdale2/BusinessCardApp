@@ -26,13 +26,7 @@ export class BusinessCardService {
   }
 
   getCards() {
-
-/*     this.cards = [new BusinessCardComponent('BusinessCard1'),
-                  new BusinessCardComponent('BusinessCard2')];
-    return this.cards; */
-
    return this.firestore.collection("businessCards").snapshotChanges(); 
-   
   }
 
   createBusinessCard(businessCard: BusinessCardComponent) {
@@ -43,7 +37,8 @@ export class BusinessCardService {
 
     //this is successfully pushing to firebase
     this.firestore.collection('businessCards')
-      .add({firstName: this.businessCard.firstName, company: this.businessCard.company, phone: this.businessCard.phone});
+      .add({firstName: this.businessCard.firstName, lastName: this.businessCard.lastName, company: this.businessCard.company, 
+        position: this.businessCard.position, address: this.businessCard.address, phone: this.businessCard.phone});
 
 
 
@@ -56,13 +51,18 @@ export class BusinessCardService {
 
   }
 
-  updateBusinessCard(data) {
+  updateBusinessCard(businessCard: BusinessCardComponent, key: string, newName: string) {
 
+    this.businessCard = businessCard;
+    this.key = key;
     console.log("updating a business card");
+
+    const cardRed = this.firestore
+    .collection("businessCards").doc(key).update({ firstName: newName })
 
     return this.firestore
       .collection("businessCards")
-      .doc(data.payload.doc.id)
+      .doc(key)
       .set({completed: true}, {merge:true});
 
   }

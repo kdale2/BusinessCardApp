@@ -6,7 +6,7 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
 }
 
-.cards {
+.cards1 {
 
     width: 100px;
     max-width: 150px;
@@ -15,3 +15,20 @@
     box-sizing: border-box;
 
 }
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+
+ }
+ 
+.card {
+    flex: 1 0 500px;
+    box-sizing: border-box;
+    border-style: solid;
+    margin: 1rem .25em;
+    padding: 1.5em;
+
+}
+
+

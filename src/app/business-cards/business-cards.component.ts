@@ -12,6 +12,7 @@ export class BusinessCardsComponent implements OnInit {
 
   businessCard: BusinessCardComponent;
   key: string;
+  name: string; //for testing update
 
   constructor(private businessCardService: BusinessCardService) { 
 /* 
@@ -39,6 +40,14 @@ export class BusinessCardsComponent implements OnInit {
     console.log("deleting card");
     console.log("detelting " + this.businessCard.firstName);
     this.businessCardService.deleteBusinessCard(this.businessCard, this.key);
+    }
+
+    update(businessCard: BusinessCardComponent, id: string, name: string)
+    {
+      this.key = id;
+      this.businessCard = businessCard;
+      this.name = 'updated name';
+      this.businessCardService.updateBusinessCard(this.businessCard, this.key, this.name);
     }
   } 
 
