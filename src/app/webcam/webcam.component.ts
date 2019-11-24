@@ -8,6 +8,7 @@ import domtoimage from 'dom-to-image';
 import { BusinessCardComponent } from '../business-card/business-card.component';
 import { BusinessCardService } from '../business-card.service';
 import { environment } from 'src/environments/environment';
+import { CloudvisionService } from '../cloudvision.service';
 
 
 @Component({
@@ -49,7 +50,7 @@ export class WebcamComponent implements OnInit {
       phone: ''
     }
 
-  constructor(busCardService: BusinessCardService) { this.busCardService = busCardService }
+  constructor(busCardService: BusinessCardService, private cloudvision: CloudvisionService) { this.busCardService = busCardService }
 
   ngOnInit() {
     WebcamUtil.getAvailableVideoInputs()
@@ -120,16 +121,16 @@ export class WebcamComponent implements OnInit {
   public save(){
     console.log("Saving picture"); 
     console.log(this.imageUrl);
-    this.imageUrl = this.imageUrl.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
 
-  
     this.convertToBase64();
+    const parsedImage = this.imageUrl.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
+
     console.log("Converted to base 64");
     const payload: any = {
       'requests': [
         {
           'image': {
-            'content' : this.imageUrl
+            'content' : parsedImage
           },
           'features': [
             {
@@ -140,6 +141,7 @@ export class WebcamComponent implements OnInit {
         }
       ]
     }
+    this.cloudvision.postRequest(payload);
   }
 
   convertToBase64() {

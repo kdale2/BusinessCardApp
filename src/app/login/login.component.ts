@@ -28,5 +28,6 @@ export class LoginComponent implements OnInit {
 
   signOut() {
     this.authService.logout();
+    alert("Successfully logged out");
   }
 }

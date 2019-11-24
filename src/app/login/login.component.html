@@ -1,6 +1,6 @@
 <div class="container">
   <br><br>
-      <h1>Log In With Email</h1>
+      <h1>Please sign in to continue</h1>
         <div class="formFormat">
           <label for="id">email address: </label>
           <input type="text" #emailInput class="form-control" name = "id">
@@ -8,7 +8,7 @@
   
         <div class="formFormat">
           <label for="description">password: </label>
-          <input type="text" #passwordInput class="form-control" id="description">
+          <input type="password" #passwordInput class="form-control" id="description">
         </div>
         <br>
         <button type="submit" class="btn btn-success" (click)='signIn(emailInput.value, passwordInput.value)'>

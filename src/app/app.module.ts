@@ -21,6 +21,7 @@ import {WebcamModule} from 'ngx-webcam';
 import { WebcamComponent } from './webcam/webcam.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http'; 
+import { CloudvisionService } from './cloudvision.service';
 
 
 @NgModule({
@@ -43,7 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireStorageModule,
     HttpClientModule,
   ],
-  providers: [AuthService, AuthGuard, BusinessCardService, HttpClientModule],
+  providers: [AuthService, AuthGuard, BusinessCardService, HttpClientModule, CloudvisionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
