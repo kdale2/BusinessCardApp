@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { BusinessCardComponent } from './business-card/business-card.component';
 import { Observable } from 'rxjs';
 import { idTokenResult } from '@angular/fire/auth-guard';
+import { HttpClient } from 'selenium-webdriver/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,18 +18,16 @@ export class BusinessCardService {
   busCardCollection: AngularFirestoreCollection<BusinessCardComponent>;
   businessCard: BusinessCardComponent;
   key: string;
+  company: string;
 
-  constructor(private firestore: AngularFirestore) { 
-
+  constructor(private firestore: AngularFirestore, private httpClient: HttpClient) { 
     this.busCardCollection = firestore.collection<BusinessCardComponent>(this.dbPath);
     this.cards =  this.busCardCollection.valueChanges();
-
   }
 
   getCards() {
    return this.firestore.collection("businessCards").snapshotChanges(); 
   }
-
   createBusinessCard(businessCard: BusinessCardComponent) {
    
     console.log("creating a business card");
@@ -39,7 +38,6 @@ export class BusinessCardService {
     this.firestore.collection('businessCards')
       .add({firstName: this.businessCard.firstName, lastName: this.businessCard.lastName, company: this.businessCard.company, 
         position: this.businessCard.position, address: this.businessCard.address, phone: this.businessCard.phone});
-
 
 
 /*     return new Promise<any>((resolve, reject) => {
@@ -57,18 +55,17 @@ export class BusinessCardService {
     this.key = key;
     console.log("updating a business card");
 
-    const cardRed = this.firestore
-    .collection("businessCards").doc(key).update({ firstName: newName })
+    const card = this.firestore
+    .collection("businessCards").doc(key).update({ firstName: newName });
 
+    //just tesitng how updating works, this successfully updates one field to a specific value
     return this.firestore
       .collection("businessCards")
       .doc(key)
-      .set({completed: true}, {merge:true});
-
+      .update({firstName: 'Sheila'});
   }
 
   deleteBusinessCard(businessCard: BusinessCardComponent, key: string) {
-
 
     this.key = key;
     //to do
@@ -76,12 +73,8 @@ export class BusinessCardService {
     this.businessCard = businessCard;
     console.log("in the service and deleting " + this.businessCard.firstName);
 
-
     //this works but only for specific key
     this.firestore.collection("businessCards").doc(key).delete();
-
-
-    //implement delete functionality
 
   }
 }

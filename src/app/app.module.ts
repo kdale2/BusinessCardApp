@@ -20,6 +20,7 @@ import { BusinessCardService } from './business-card.service';
 import {WebcamModule} from 'ngx-webcam';
 import { WebcamComponent } from './webcam/webcam.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http'; 
 
 
 @NgModule({
@@ -40,8 +41,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    HttpClientModule,
   ],
-  providers: [AuthService, AuthGuard, BusinessCardService],
+  providers: [AuthService, AuthGuard, BusinessCardService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

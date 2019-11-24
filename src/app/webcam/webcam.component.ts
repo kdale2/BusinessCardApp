@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
 import {WebcamImage} from 'ngx-webcam';
@@ -7,6 +7,9 @@ import {WebcamInitError} from 'ngx-webcam';
 import domtoimage from 'dom-to-image';
 import { BusinessCardComponent } from '../business-card/business-card.component';
 import { BusinessCardService } from '../business-card.service';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-webcam',
@@ -37,7 +40,17 @@ export class WebcamComponent implements OnInit {
     base64: string;
     imageUrl;
 
-  constructor(busCardService: BusinessCardService) { this.busCardService = busCardService }
+    private URL = `https://vision.googleapis.com/v1/images:annotate?key=${environment.cloudVisionKey}`;
+    result = {
+      firstName: '',
+      lastName: '',
+      company: '',
+      position: '',
+      address: '',
+      phone: ''
+    }
+
+  constructor(busCardService: BusinessCardService, private http: HttpClient) { this.busCardService = busCardService }
 
   ngOnInit() {
     WebcamUtil.getAvailableVideoInputs()
@@ -49,9 +62,6 @@ export class WebcamComponent implements OnInit {
   addCard(firstNameInput: string, lastNameInput: string, companyInput: string, positionInput: string, addressInput: string, phoneInput: string) {
     console.log("Adding a new card");
     this.businessCard = new BusinessCardComponent(firstNameInput, lastNameInput, companyInput,positionInput, addressInput, phoneInput);
-    console.log("new business card name: " + this.businessCard.firstName);
-
-    //right now this is only sending over the input for 'name' field and not an object
     this.busCardService.createBusinessCard(this.businessCard);
   }
 
@@ -68,13 +78,6 @@ export class WebcamComponent implements OnInit {
       console.warn("Camera access was not allowed by user!");
     }
     this.errors.push(error);
-  }
-
-  public showNextWebcam(directionOrDeviceId: boolean|string): void {
-    // true => move forward through devices
-    // false => move backwards through devices
-    // string => move to device with given deviceId
-    this.nextWebcam.next(directionOrDeviceId);
   }
 
   public handleImage(webcamImage: WebcamImage): void {
@@ -106,10 +109,20 @@ export class WebcamComponent implements OnInit {
   }
 
   public save(){
+/*     
+    const imageSnap = document.getElementById('imageSnapshot');
+    domtoimage.toPng(imageSnap).then( (dataURL: string) => {
+      console.log(dataURL);
+      const tempSub = this.textReader(dataURL);
+    }) */
+    
     console.log("Saving picture"); 
-    console.log(this.imageUrl);
-  
+    //console.log(this.imageUrl);
+    this.imageUrl = this.imageUrl.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
     this.convertToBase64();
+    console.log("converted to base 64");
+    //console.log(this.imageUrl);
+    //this.textReader(this.imageUrl);
     const payload: any = {
       'requests': [
         {
@@ -127,18 +140,36 @@ export class WebcamComponent implements OnInit {
     }
   }
 
+/*  textReader(image) {
+    return this.http.post(this.URL,
+      {
+      'requests': [{
+        'image': {
+        'content': image
+        },
+        'features': [{
+          'type': 'TEXT_DETECTION'
+        }]
+      }]});
+  }  */
+
   convertToBase64() {
-    //const image = document.createElement('img');
+    console.log("converting to base 64")
+    const image = document.createElement('img');
     //image.src = this.imageUrl;
-    const imgNode = this.imageUrl;
+    // const imgNode = this.imageUrl;
+    const imgNode = document.getElementById('image');
+    
     if (imgNode ) {
       console.log('SELECTED IMAGE');
       console.log(imgNode);
       console.log('SELECTED IMAGE');
+
       domtoimage.toPng(imgNode)
       .then( (dataUrl: string) => {
         console.log('SELECTED IMAGE 2');
-        console.log(dataUrl);
+//        this.base64Image.emit(dataUrl);
+
         this.base64 = dataUrl;
         console.log('SELECTED IMAGE 2');
       }).catch( (e: any) => {
