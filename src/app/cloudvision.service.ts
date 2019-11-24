@@ -51,11 +51,11 @@ export class CloudvisionService {
 
 
       if (text) {
-        let phoneMatches = text.match(/[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}/);
+/*         let phoneMatches = text.match(/[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}/);
         if (phoneMatches && phoneMatches.length > 0) {
           this.phone = phoneMatches[0];
           console.log("phone number: " + this.phone);
-        }
+        } */
 
         const line = text.split('\n');
 

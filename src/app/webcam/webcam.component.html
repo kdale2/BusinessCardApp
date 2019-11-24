@@ -1,5 +1,11 @@
 <h1>Webcam</h1>
-<p>Please place your card in front of webcam.</p>
+<p>Please place your card in front of webcam.</p><br>
+Use following format:<br>
+first name<br>
+last name<br>
+company/school<br>
+address<br>
+phone number<br><br>
 
 <div>
 <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
@@ -39,7 +45,7 @@
   <br><br>
 
   <div class="container">
-    <h1>Add or adjust your card information</h1>
+    <h1>Or add your information manually:</h1>
       <div class="formFormat">
         <label for="id">First Name: </label>
         <input type="text" #firstNameInput class="form-control" name = "firstName">
