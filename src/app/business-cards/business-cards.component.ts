@@ -50,4 +50,3 @@ export class BusinessCardsComponent implements OnInit {
       this.businessCardService.updateBusinessCard(this.businessCard, this.key, this.name);
     }
   } 
-

@@ -4,7 +4,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { BusinessCardComponent } from './business-card/business-card.component';
 import { Observable } from 'rxjs';
 import { idTokenResult } from '@angular/fire/auth-guard';
-import { HttpClient } from 'selenium-webdriver/http';
 
 @Injectable({
   providedIn: 'root'
@@ -18,16 +17,18 @@ export class BusinessCardService {
   busCardCollection: AngularFirestoreCollection<BusinessCardComponent>;
   businessCard: BusinessCardComponent;
   key: string;
-  company: string;
 
-  constructor(private firestore: AngularFirestore, private httpClient: HttpClient) { 
+  constructor(private firestore: AngularFirestore) { 
+
     this.busCardCollection = firestore.collection<BusinessCardComponent>(this.dbPath);
     this.cards =  this.busCardCollection.valueChanges();
+
   }
 
   getCards() {
    return this.firestore.collection("businessCards").snapshotChanges(); 
   }
+
   createBusinessCard(businessCard: BusinessCardComponent) {
    
     console.log("creating a business card");
@@ -38,6 +39,7 @@ export class BusinessCardService {
     this.firestore.collection('businessCards')
       .add({firstName: this.businessCard.firstName, lastName: this.businessCard.lastName, company: this.businessCard.company, 
         position: this.businessCard.position, address: this.businessCard.address, phone: this.businessCard.phone});
+
 
 
 /*     return new Promise<any>((resolve, reject) => {
