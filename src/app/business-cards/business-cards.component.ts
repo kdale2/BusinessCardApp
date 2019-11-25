@@ -12,7 +12,14 @@ export class BusinessCardsComponent implements OnInit {
 
   businessCard: BusinessCardComponent;
   key: string;
-  name: string; //for testing update
+  public show:boolean = false;
+  public buttonName:any = 'Show';
+  firstName: string;
+  lastName: string;
+  company: string;
+  position: string;
+  address: string;
+  phone: string;
 
   constructor(private businessCardService: BusinessCardService) { 
 /* 
@@ -42,11 +49,31 @@ export class BusinessCardsComponent implements OnInit {
     this.businessCardService.deleteBusinessCard(this.businessCard, this.key);
     }
 
-    update(businessCard: BusinessCardComponent, id: string, name: string)
+    update(businessCard: BusinessCardComponent, id: string, firstName: string, lastName: string, 
+      company: string, position: string, address: string, phone: string)
     {
-      this.key = id;
       this.businessCard = businessCard;
-      this.name = 'updated name';
-      this.businessCardService.updateBusinessCard(this.businessCard, this.key, this.name);
+      this.key = id;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.company = company;
+      this.position = position;
+      this.address = address;
+      this.phone = phone;
+
+      this.businessCardService.updateBusinessCard(this.businessCard, this.key, this.firstName, this.lastName, 
+        this.company, this.position, this.address, this.phone);
+    }
+
+    toggle(businessCard: BusinessCardComponent, id: string) {
+
+      this.businessCard = businessCard;
+      this.key = id;
+      this.show = !this.show;
+        // CHANGE THE NAME OF THE BUTTON.
+      if(this.show)  
+        this.buttonName = "Hide";
+      else
+        this.buttonName = "Show";
     }
   } 

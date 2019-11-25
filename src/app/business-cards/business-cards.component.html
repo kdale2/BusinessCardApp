@@ -1,30 +1,4 @@
-<!-- <h1>Business Cards</h1>
-
-<p>
-    <li *ngFor="let card of businessCards">{{card.name}}</li>
-</p>
- -->
-<!-- <table class = "table">
-    <thead>
-        <tr>
-            <th>Business Cards</th>
-        </tr>
-    </thead>
-    <tbody>
-      <div>
-        <tr class = "cards1" *ngFor="let card of businessCards">
-
-            <td>Name: {{card.payload.doc.data().firstName}}</td>
-            <td>Company: {{card.payload.doc.data().company}}</td>
-            <td>Phone #: {{card.payload.doc.data().phone}}</td>
-            <button (click) = 'deleteCard(card, card.payload.doc.id)'>Delete card</button>        
-        </tr>
-
-      </div>
-    </tbody>
-</table> -->
 <br>
-
 <h1 class = "header">Your Business Card Collection:</h1>
 <br>
 <div class = "centered">
@@ -40,9 +14,53 @@
         <p>{{card.payload.doc.data().phone}}</p>      
        </article>   
        <button (click) = 'deleteCard(card, card.payload.doc.id)'>Delete card</button> <br>
-       <!-- <button class="actionBtn" (click)="update(card, card.payload.doc.id, 'updated');">Update</button>  -->
+<!--        <button class="actionBtn" (click)="update(card, card.payload.doc.id, 'updated');">Update</button>  -->  
+       <button (click) = "toggle(card, card.payload.doc.id)">Update</button> 
+       
+       <ng-container *ngIf="show">
+          <div style="margin: 0 auto;text-align: left;">
+      
+              <div class="formFormat">
+                  <label>First Name:</label>
+                  <input type="text" #firstNameInput name = "firstName"/>
+              </div>
+      
+              <div class="formFormat">
+                  <label>Last Name:</label>
+                  <input type="text" #lastNameInput name = "lastName"/>        
+              </div>
+      
+                  <div class="formFormat">
+                      <label>Organization:</label>
+                      <input type="text" #companyInput name = "company"/>            
+                  </div>
+      
+                  <div class="formFormat">
+                      <label>Position:</label>
+                      <input type="text" #positionInput name = "position"/>            
+                  </div>
+                  
+                  <div class="formFormat">
+                      <label>Address:</label>
+                      <input type="text" #addressInput name = "address"/>            
+                  </div>
+      
+                  <div class="formFormat">
+                      <label>Phone:</label>
+                      <input type="text" #phoneInput name = "phone"/>
+                  </div>
+                  <button (click) = 'update(card, card.payload.doc.id, firstNameInput.value, lastNameInput.value, companyInput.value, positionInput.value, 
+                  addressInput.value, phoneInput.value)'>Submit changes</button> <br>
+      
+          </div>
+      </ng-container>
+      
   </ul>
+
+
   </section>
-
 </div> 
-
+<!-- 
+<button (click)="toggle()" id="bt">
+    {{buttonName}}
+</button> -->

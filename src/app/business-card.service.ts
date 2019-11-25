@@ -17,6 +17,12 @@ export class BusinessCardService {
   busCardCollection: AngularFirestoreCollection<BusinessCardComponent>;
   businessCard: BusinessCardComponent;
   key: string;
+  firstName: string;
+  lastName: string;
+  company: string;
+  position: string;
+  address: string;
+  phone: string;
 
   constructor(private firestore: AngularFirestore) { 
 
@@ -51,20 +57,19 @@ export class BusinessCardService {
 
   }
 
-  updateBusinessCard(businessCard: BusinessCardComponent, key: string, newName: string) {
+  updateBusinessCard(businessCard: BusinessCardComponent, key: string, firstName: string, lastName: string, company: string, position: string, address: string, phone: string) {
 
     this.businessCard = businessCard;
     this.key = key;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.company = company;
+    this.position = position;
+    this.address = address;
+    this.phone = phone;
     console.log("updating a business card");
-
     const card = this.firestore
-    .collection("businessCards").doc(key).update({ firstName: newName });
-
-    //just tesitng how updating works, this successfully updates one field to a specific value
-    return this.firestore
-      .collection("businessCards")
-      .doc(key)
-      .update({firstName: 'Sheila'});
+    .collection("businessCards").doc(key).update({ firstName: this.firstName, lastName: this.lastName, company: this.company, position: this.position, address: this.address, phone: this.phone});
   }
 
   deleteBusinessCard(businessCard: BusinessCardComponent, key: string) {
