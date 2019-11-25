@@ -6,29 +6,40 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
 }
 
-.cards1 {
+.header {
+    margin-left: 3rem;
 
-    width: 100px;
+}
+
+/* .cards1 {
+
+    width: 200px;
     max-width: 150px;
     height: 100px;
     border: 5px solid black;
     box-sizing: border-box;
 
-}
+} */
 
 .cards {
     display: flex;
     flex-wrap: wrap;
 
+
  }
  
 .card {
     flex: 1 0 500px;
+    width: 25rem;
+    background-color: #dadeec;
     box-sizing: border-box;
     border-style: solid;
+    border-width: medium;
     margin: 1rem .25em;
     padding: 1.5em;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
 
-}
+}  
 
 

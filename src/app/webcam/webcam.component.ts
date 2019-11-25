@@ -9,6 +9,8 @@ import { BusinessCardComponent } from '../business-card/business-card.component'
 import { BusinessCardService } from '../business-card.service';
 import { environment } from 'src/environments/environment';
 import { CloudvisionService } from '../cloudvision.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -41,14 +43,14 @@ export class WebcamComponent implements OnInit {
     imageUrl;
 
     private URL = `https://vision.googleapis.com/v1/images:annotate?key=${environment.cloudVisionKey}`;
-    result = {
+/*     result = {
       firstName: '',
       lastName: '',
       company: '',
       position: '',
       address: '',
       phone: ''
-    }
+    } */
 
   constructor(busCardService: BusinessCardService, private cloudvision: CloudvisionService) { this.busCardService = busCardService }
 

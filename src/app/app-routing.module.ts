@@ -6,6 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { AuthGuard } from './auth.guard';
 import {WebcamComponent} from './webcam/webcam.component';
+import { AddcardComponent } from './addcard/addcard.component';
 
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: BusinessCardsComponent, canActivate: [AuthGuard] },
   { path: 'webcam', component: WebcamComponent, canActivate: [AuthGuard] },
+  { path: 'addcard', component: AddcardComponent, canActivate: [AuthGuard]},
   { path: '**', component: NotFoundComponent }
 
 ];

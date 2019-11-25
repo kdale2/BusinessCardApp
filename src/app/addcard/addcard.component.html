@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>Add your card information:</h1>
+      <div class="formFormat">
+        <label for="id">First Name: </label>
+        <input type="text" #firstNameInput class="form-control" name = "firstName">
+      </div>
+
+      <div class="formFormat">
+          <label for="id">Last Name: </label>
+          <input type="text" #lastNameInput class="form-control" name = "lastName">
+        </div>
+
+      <div class="formFormat">
+        <label for="company">company: </label>
+        <input type="text" #companyInput class="form-control" id="company">
+      </div>
+
+      <div class="formFormat">
+        <label for="id">position: </label>
+        <input type="text" #positionInput class="form-control" name = "position">
+      </div>
+
+      <div class="formFormat">
+          <label for="company">Address: </label>
+          <input type="text" #addressInput class="form-control" id="address">
+        </div>
+  
+        <div class="formFormat">
+          <label for="id">phone: </label>
+          <input type="text" #phoneInput class="form-control" name = "phoneNumber">
+        </div>
+
+
+      <br>
+      <button type="submit" class="btn btn-success" (click)='addCard(firstNameInput.value, lastNameInput.value, companyInput.value, positionInput.value, 
+      addressInput.value, phoneInput.value)'>
+        Add to List</button>
+  </div>

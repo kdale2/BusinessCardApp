@@ -51,11 +51,6 @@ export class CloudvisionService {
 
 
       if (text) {
-/*         let phoneMatches = text.match(/[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}/);
-        if (phoneMatches && phoneMatches.length > 0) {
-          this.phone = phoneMatches[0];
-          console.log("phone number: " + this.phone);
-        } */
 
         const line = text.split('\n');
 
@@ -71,8 +66,8 @@ export class CloudvisionService {
       this.businessCard = new BusinessCardComponent(this.firstName, this.lastName, this.position, this.company, this.address, this.phone);
       console.log(this.businessCard.address);
       this.busCardService.createBusinessCard(this.businessCard);
+      alert("Business Card Added! Navigate to dashboard to view.");
       return this.businessCard;
     }
-
 }
 

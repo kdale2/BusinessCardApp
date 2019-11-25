@@ -56,6 +56,7 @@ SignIn(email: string, password: string) {
     })
     .catch(err => {
       console.log('Something is wrong:',err.message);
+      alert("Error. Please try again");
       this.router.navigate(['/login']);
 
     });
@@ -71,6 +72,9 @@ isLoggedIn() {
 
   logout() {
     console.log("signing out");
+    (<HTMLInputElement>document.getElementById('description')).value ='';
+    
+
     this.afAuth.auth.signOut()
     .then((res) => this.router.navigate(['login']));
   }

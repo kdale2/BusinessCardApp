@@ -25,22 +25,24 @@
 </table> -->
 <br>
 
+<h1 class = "header">Your Business Card Collection:</h1>
+<br>
 <div class = "centered">
   <section class = "cards">
 
   <ul *ngFor="let card of businessCards">
-
       <article class = "card">
-        <p>Name: {{card.payload.doc.data().firstName}} {{card.payload.doc.data().lastName}}</p>
-        <p>Company: {{card.payload.doc.data().company}}</p>
-        <p>Position: {{card.payload.doc.data().position}}</p>
-        <p>Address: {{card.payload.doc.data().address}}</p>
-        <p>Phone #: {{card.payload.doc.data().phone}}</p>
-        <button (click) = 'deleteCard(card, card.payload.doc.id)'>Delete card</button> 
-        <button class="actionBtn" (click)="update(card, card.payload.doc.id, 'updated');">Update Name</button>       
-
+        
+        <h2>{{card.payload.doc.data().firstName}} {{card.payload.doc.data().lastName}}</h2>
+        <p>{{card.payload.doc.data().company}}</p>
+        <p>{{card.payload.doc.data().position}}</p>
+        <p>{{card.payload.doc.data().address}}</p>
+        <p>{{card.payload.doc.data().phone}}</p>      
        </article>   
+       <button (click) = 'deleteCard(card, card.payload.doc.id)'>Delete card</button> <br>
+       <!-- <button class="actionBtn" (click)="update(card, card.payload.doc.id, 'updated');">Update</button>  -->
   </ul>
   </section>
 
-</div>
+</div> 
+

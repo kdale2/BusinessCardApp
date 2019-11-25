@@ -8,7 +8,7 @@
   
         <div class="formFormat">
           <label for="description">password: </label>
-          <input type="password" #passwordInput class="form-control" id="description">
+          <input type="password" onfocus="this.value=''" #passwordInput class="form-control" id="description">
         </div>
         <br>
         <button type="submit" class="btn btn-success" (click)='signIn(emailInput.value, passwordInput.value)'>
