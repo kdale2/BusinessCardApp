@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-
   signIn(email: string, password: string) {
     console.log("signing you in");
     this.authService.SignIn(email, password);

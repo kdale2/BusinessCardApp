@@ -1,21 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from './models/user.model'; // optional
-
-import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-/* 
-interface User {
-  uid: string;
-  email: string;
-  photoURL?: string;
-  displayName?: string;
-  favoriteColor?: string;
-} */
+
 
 @Injectable({
   providedIn: 'root'
@@ -74,7 +62,6 @@ isLoggedIn() {
     console.log("signing out");
     (<HTMLInputElement>document.getElementById('description')).value ='';
     
-
     this.afAuth.auth.signOut()
     .then((res) => this.router.navigate(['login']));
   }

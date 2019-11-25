@@ -22,15 +22,11 @@ export class BusinessCardsComponent implements OnInit {
   phone: string;
 
   constructor(private businessCardService: BusinessCardService) { 
-/* 
-    console.log("business cards component");
-    this.businessCards = businessCardService.getCards(); */
 
   }
 
   ngOnInit() { 
     this.getBusCards();
-    
   }
 
   businessCards;
@@ -44,8 +40,6 @@ export class BusinessCardsComponent implements OnInit {
   deleteCard(businessCard: BusinessCardComponent, id: string) {
     this.key = id;
     this.businessCard = businessCard;
-    console.log("deleting card");
-    console.log("detelting " + this.businessCard.firstName);
     this.businessCardService.deleteBusinessCard(this.businessCard, this.key);
     }
 
@@ -70,7 +64,7 @@ export class BusinessCardsComponent implements OnInit {
       this.businessCard = businessCard;
       this.key = id;
       this.show = !this.show;
-        // CHANGE THE NAME OF THE BUTTON.
+
       if(this.show)  
         this.buttonName = "Hide";
       else

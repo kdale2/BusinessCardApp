@@ -17,7 +17,6 @@ export class AddcardComponent implements OnInit {
   }
 
   addCard(firstNameInput: string, lastNameInput: string, companyInput: string, positionInput: string, addressInput: string, phoneInput: string) {
-    console.log("Adding a new card");
     this.businessCard = new BusinessCardComponent(firstNameInput, lastNameInput, companyInput,positionInput, addressInput, phoneInput);
     this.busCardService.createBusinessCard(this.businessCard);
     alert("Card added. Navigate to your dashboard to view.");
