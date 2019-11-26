@@ -6,3 +6,19 @@
     display: inline-block;
     text-align: center;
 }
+
+.test {
+    text-decoration-color: blue;
+    flex: 1 0 500px;
+    width: 25rem;
+    background-color: #dadeec;
+    text-align: center;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: medium;
+    margin-left: 3rem;
+    margin: 1rem .25em;
+    padding: 1.5em;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}

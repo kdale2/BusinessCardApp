@@ -29,6 +29,7 @@ export class BusinessCardsComponent implements OnInit {
     this.getBusCards();
   }
 
+
   businessCards;
 
   getBusCards = () =>
@@ -59,10 +60,8 @@ export class BusinessCardsComponent implements OnInit {
         this.company, this.position, this.address, this.phone);
     }
 
-    toggle(businessCard: BusinessCardComponent, id: string) {
+    toggle() {
 
-      this.businessCard = businessCard;
-      this.key = id;
       this.show = !this.show;
 
       if(this.show)  

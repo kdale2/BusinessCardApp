@@ -1,13 +1,16 @@
 <div class ="page">
-
+<br>
 <h1>Webcam</h1>
-<p>Place your card in front of webcam.</p>
-Please use following format for proper reading:<br>
+Note: Webcam will successfully add your card if in the following format:<br>
+
+<div class = "test">
 First Name<br>
 Last Name<br>
 Company/school<br>
+Position<br>
 Address<br>
 Phone number<br><br>
+</div>
 
 <div>
 <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
