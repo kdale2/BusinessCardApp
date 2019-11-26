@@ -1,3 +1,4 @@
-https://github.com/kdale2/BusinessCardApp <br>
-Firebase hosting URL: https://businesscards-4e744.firebaseapp.com <br>
-Business Card App - Final project for Web Applications class
+https://github.com/kdale2/BusinessCardApp
+Firebase hosting URL: https://businesscards-4e744.firebaseapp.com
+Log in using chandlergegg@gmail.com and 5DeepBreaths!
+Webcam functionality seems to work best when using Firefox browser
