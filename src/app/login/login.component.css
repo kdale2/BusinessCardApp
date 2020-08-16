@@ -1,5 +1,18 @@
 .container {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
-    color: #0d4896;
+    color: #000205;
     max-width: 400px;
+}
+
+button {
+    margin-right: 5px;
+    background-color: rgb(92, 143, 238)
+}
+
+#loggedOut {
+    visibility: hidden;
+}
+
+#test {
+    visibility: hidden;
 }

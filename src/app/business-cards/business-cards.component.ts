@@ -47,6 +47,7 @@ export class BusinessCardsComponent implements OnInit {
     update(businessCard: BusinessCardComponent, id: string, firstName: string, lastName: string, 
       company: string, position: string, address: string, phone: string)
     {
+      console.log('updating card');
       this.businessCard = businessCard;
       this.key = id;
       this.firstName = firstName;
@@ -55,12 +56,37 @@ export class BusinessCardsComponent implements OnInit {
       this.position = position;
       this.address = address;
       this.phone = phone;
-
+      
       this.businessCardService.updateBusinessCard(this.businessCard, this.key, this.firstName, this.lastName, 
         this.company, this.position, this.address, this.phone);
+
+/*       //clear form fields
+      let inputValue = (<HTMLInputElement>document.getElementById("first"));
+      inputValue.value = '';
+
+      let inputValue2 = (<HTMLInputElement>document.getElementById("lastName"));
+      inputValue2.value = '';
+  
+      let inputValue3 = (<HTMLInputElement>document.getElementById("company"));
+      inputValue3.value = '';
+  
+      let inputValue4 = (<HTMLInputElement>document.getElementById("position"));
+      inputValue4.value = '';
+  
+      let inputValue5 = (<HTMLInputElement>document.getElementById("address"));
+      inputValue5.value = '';
+  
+      let inputValue6 = (<HTMLInputElement>document.getElementById("phone"));
+      inputValue6.value = ''; */
+
+      this.toggle(this.businessCard, this.key);
+
     }
 
-    toggle() {
+    toggle(businessCard: BusinessCardComponent, id: string) {
+
+      this.businessCard = businessCard;
+      this.key = id;
 
       this.show = !this.show;
 

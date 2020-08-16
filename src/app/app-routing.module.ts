@@ -7,12 +7,16 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { AuthGuard } from './auth.guard';
 import {WebcamComponent} from './webcam/webcam.component';
 import { AddcardComponent } from './addcard/addcard.component';
+import { ReadmeComponent } from './readme/readme.component';
 
 
 
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
+  { path: 'home', component: ReadmeComponent, canActivate: [AuthGuard] },
+
   { path: 'dashboard', component: BusinessCardsComponent, canActivate: [AuthGuard] },
   { path: 'webcam', component: WebcamComponent, canActivate: [AuthGuard] },
   { path: 'addcard', component: AddcardComponent, canActivate: [AuthGuard]},

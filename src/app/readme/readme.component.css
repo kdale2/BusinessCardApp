@@ -1,0 +1,24 @@
+.intro {
+    background-color: #94b7f7;
+    width: 500px;
+    margin: 35px;
+    font-size: 20px;
+    border-style: solid;
+    padding: 15px;
+}
+
+.more {
+    background-color: #60cac5;
+    width: 500px;
+    margin: 35px;
+    font-size: 20px;
+    border-style: solid;
+    padding: 15px;
+}
+
+div {
+    box-shadow: 5px 5px 5px #888888;
+    border-style: solid;
+    border-width: medium;
+    border-color: rgb(100, 98, 98);
+}

@@ -23,6 +23,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http'; 
 import { CloudvisionService } from './cloudvision.service';
 import { AddcardComponent } from './addcard/addcard.component';
+import { ReadmeComponent } from './readme/readme.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AddcardComponent } from './addcard/addcard.component';
     NotFoundComponent,
     WebcamComponent,
     NavbarComponent,
-    AddcardComponent
+    AddcardComponent,
+    ReadmeComponent
   ],
   imports: [
     WebcamModule,

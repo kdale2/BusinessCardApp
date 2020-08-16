@@ -1,39 +1,38 @@
-<div class ="page">
-<br>
-<h1>Webcam</h1>
-Note: Webcam will successfully add your card if in the following format:<br>
+<div class="page">
+    <h1>Webcam</h1>
+    <p>
+    <br>Please allow the app access to your device's webcam.<br>
+    Note: Webcam will successfully add your card if in the following format:<br>
+    </p>
 
-<div class = "test">
-First Name<br>
-Last Name<br>
-Company/school<br>
-Position<br>
-Address<br>
-Phone number<br><br>
-</div>
+    <div class="card">
+        First Name<br>
+        Last Name<br>
+        Company/school<br>
+        Position<br>
+        Address<br>
+        Phone number<br><br>
+    </div>
 
-<div>
-<webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
-[allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
-[videoOptions]="videoOptions"
-[imageQuality]="1"
-(cameraSwitched)="cameraWasSwitched($event)"
-(initError)="handleInitError($event)"
-></webcam>
+    <div>
+        <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+            *ngIf="showWebcam" [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+            [videoOptions]="videoOptions" [imageQuality]="1" (cameraSwitched)="cameraWasSwitched($event)"
+            (initError)="handleInitError($event)"></webcam>
 
-<br/>
-<button class="btn btn-success" (click)="triggerSnapshot();">Capture</button>
-<!-- <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button> -->
-<br/>
-</div>
-<br>
-<div class="snapshot" *ngIf="webcamImage">
-    <h3>Success!</h3>
-    <img [src]="webcamImage.imageAsDataUrl"/>
-</div>
+        <br />
+        <button class="btn btn-success" (click)="triggerSnapshot();">Capture</button>
+        <!-- <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button> -->
+        <br />
+    </div>
+    <br>
+    <div class="snapshot" *ngIf="webcamImage">
+        <h3>Success!</h3>
+        <img [src]="webcamImage.imageAsDataUrl" />
+    </div>
 
-<div>
-    <button class="btn btn-success" (click)="save()"> Add to your cards </button>
-</div>
+    <div>
+        <button class="btn btn-success" (click)="save()"> Add to your cards </button>
+    </div>
 
 </div>

@@ -5,14 +5,17 @@
 .page {
     display: inline-block;
     text-align: center;
+    margin: 30px;
+    padding: 30px;
+
 }
 
-.test {
-    text-decoration-color: blue;
+.card {
     flex: 1 0 500px;
     width: 25rem;
-    background-color: #dadeec;
+    background-color: #94b7f7;
     text-align: center;
+    font-weight: bold;
     box-sizing: border-box;
     border-style: solid;
     border-width: medium;
@@ -21,4 +24,9 @@
     padding: 1.5em;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
+}
+
+button {
+    background-color: rgb(82, 148, 185);
+    font-size: 20px;
 }

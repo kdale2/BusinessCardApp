@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {WebcamImage} from 'ngx-webcam';
 import {WebcamUtil} from 'ngx-webcam';
@@ -43,13 +43,14 @@ export class WebcamComponent implements OnInit {
     private URL = `https://vision.googleapis.com/v1/images:annotate?key=${environment.cloudVisionKey}`;
 
 
-  constructor(busCardService: BusinessCardService, private cloudvision: CloudvisionService) { this.busCardService = busCardService }
+  constructor(private elementRef: ElementRef, busCardService: BusinessCardService, private cloudvision: CloudvisionService) { this.busCardService = busCardService }
 
   ngOnInit() {
     WebcamUtil.getAvailableVideoInputs()
     .then((mediaDevices: MediaDeviceInfo[]) => {
       this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
     });
+
   }
 
   addCard(firstNameInput: string, lastNameInput: string, companyInput: string, positionInput: string, addressInput: string, phoneInput: string) {

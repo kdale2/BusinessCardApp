@@ -35,18 +35,18 @@ export class AuthService {
 }
 
 SignIn(email: string, password: string) {
+
   this.afAuth
     .auth
     .signInWithEmailAndPassword(email, password)
     .then(res => {
       console.log('Successfully signed in!');
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/home']);
     })
     .catch(err => {
       console.log('Something is wrong:',err.message);
       alert("Error. Please try again");
       this.router.navigate(['/login']);
-
     });
 }
 
@@ -62,7 +62,9 @@ isLoggedIn() {
     console.log("signing out");
     (<HTMLInputElement>document.getElementById('description')).value ='';
     
-    this.afAuth.auth.signOut()
-    .then((res) => this.router.navigate(['login']));
-  }
+    this.afAuth.auth.signOut() 
+    .then(res => {
+      this.router.navigate(['login']);
+  });
+}
 }

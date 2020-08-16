@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
 
   authService: AuthService;
   router: Router;
+  display = 'none';
+  result: String;
 
   constructor(authService: AuthService, router: Router) {
     console.log("In the login component");
@@ -21,12 +23,28 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(email: string, password: string) {
-    console.log("signing you in");
+
     this.authService.SignIn(email, password);
+    console.log("signing you in...");
+
+    // this will need to happen only if log in is successful - use a promise?
+    let logIn = document.getElementById("loggedIn");
+    logIn.style.visibility = "visible";
+
+    setTimeout(function () {
+      document.getElementById("loggedOut").style.display='none';
+  }, 3000)
+
   }
 
   signOut() {
     this.authService.logout();
-    alert("Successfully logged out");
-  }
+
+    //when logged out, display a message for only 3 second stating successful log out
+    let p = document.getElementById("loggedOut");
+    p.style.visibility = "visible";
+    setTimeout(function () {
+          document.getElementById("loggedOut").style.display='none';
+      }, 3000)
+    }
 }

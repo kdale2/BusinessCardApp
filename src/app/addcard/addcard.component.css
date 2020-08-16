@@ -1,5 +1,31 @@
 .container {
-    max-width: 400px;
-    align-content: center;
-    margin-top: 3rem;
+    max-width: 700px;
+    padding: 2em;
+    float: left;    
+    background-color: rgb(118, 207, 180);
+    margin: 3em;
+    box-shadow: 5px 10px 8px #888888;
+    border-style: solid;
+    border-width: medium;
+    border-color: rgb(100, 98, 98);
+
+}
+
+.form-control {
+    max-width: 500px;
+}
+
+.success {
+    display: none;
+    color:red;
+}
+
+button {
+    background-color: #94b7f7;
+    font-size: 20px;
+
+}
+
+#success {
+    visibility: hidden;
 }
