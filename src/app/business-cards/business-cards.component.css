@@ -1,7 +1,3 @@
-.table {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
-}
-
 .container {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', Verdana, sans-serif;
 }
@@ -48,4 +44,13 @@ label {
 
 input {
     width: 500px;
+}
+
+.update {
+    position: fixed;
+    z-index: 100;
+    left: 20%;
+    top: 20%;
+    border: solid black;
+    background-color: #60cac5;
 }

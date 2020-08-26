@@ -8,6 +8,7 @@ import { AuthGuard } from './auth.guard';
 import {WebcamComponent} from './webcam/webcam.component';
 import { AddcardComponent } from './addcard/addcard.component';
 import { ReadmeComponent } from './readme/readme.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'dashboard', component: BusinessCardsComponent, canActivate: [AuthGuard] },
   { path: 'webcam', component: WebcamComponent, canActivate: [AuthGuard] },
   { path: 'addcard', component: AddcardComponent, canActivate: [AuthGuard]},
+  { path: 'register', component: RegisterComponent},
   { path: '**', component: NotFoundComponent }
 
 ];

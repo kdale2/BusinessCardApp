@@ -1,8 +1,8 @@
 <div class="page">
     <h1>Webcam</h1>
     <p>
-    <br>Please allow the app access to your device's webcam.<br>
-    Note: Webcam will successfully add your card if in the following format:<br>
+    Please allow the application access to your device's webcam.<br>
+    Note: Webcam will most successfully capture card information if in the following format:<br>
     </p>
 
     <div class="card">
@@ -22,7 +22,7 @@
 
         <br />
         <button class="btn btn-success" (click)="triggerSnapshot();">Capture</button>
-        <!-- <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button> -->
+        <button class="btn btn-success" (click)="toggleWebcam();">Toggle Webcam</button> 
         <br />
     </div>
     <br>
@@ -31,7 +31,8 @@
         <img [src]="webcamImage.imageAsDataUrl" />
     </div>
 
-    <div>
+
+    <div id = "saveButton">
         <button class="btn btn-success" (click)="save()"> Add to your cards </button>
     </div>
 

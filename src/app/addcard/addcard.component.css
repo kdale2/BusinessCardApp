@@ -1,13 +1,13 @@
 .container {
-    max-width: 700px;
+    width: 40%;
     padding: 2em;
-    float: left;    
-    background-color: rgb(118, 207, 180);
-    margin: 3em;
+    background-color: #60cac5;
+    margin: 10px auto 10px auto;
     box-shadow: 5px 10px 8px #888888;
     border-style: solid;
     border-width: medium;
     border-color: rgb(100, 98, 98);
+
 
 }
 
@@ -15,16 +15,16 @@
     max-width: 500px;
 }
 
-.success {
-    display: none;
-    color:red;
-}
-
 button {
-    background-color: #94b7f7;
+    background-color: #5481d4;
     font-size: 20px;
 
 }
+
+button:hover {
+    background-color: rgb(84, 84, 187);
+}
+
 
 #success {
     visibility: hidden;

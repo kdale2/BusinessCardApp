@@ -13,11 +13,12 @@ export class LoginComponent implements OnInit {
   router: Router;
   display = 'none';
   result: String;
+  loggedOut: boolean = false;
 
   constructor(authService: AuthService, router: Router) {
     console.log("In the login component");
     this.authService = authService;
-   }
+  }
 
   ngOnInit() {
   }
@@ -27,24 +28,22 @@ export class LoginComponent implements OnInit {
     this.authService.SignIn(email, password);
     console.log("signing you in...");
 
-    // this will need to happen only if log in is successful - use a promise?
-    let logIn = document.getElementById("loggedIn");
-    logIn.style.visibility = "visible";
-
-    setTimeout(function () {
-      document.getElementById("loggedOut").style.display='none';
-  }, 3000)
-
   }
 
   signOut() {
     this.authService.logout();
 
+    this.loggedOut = true;
+
+    setTimeout(() => {
+      this.loggedOut = false;
+    }, 4000);
+
     //when logged out, display a message for only 3 second stating successful log out
-    let p = document.getElementById("loggedOut");
+/*     let p = document.getElementById("loggedOut");
     p.style.visibility = "visible";
     setTimeout(function () {
-          document.getElementById("loggedOut").style.display='none';
-      }, 3000)
-    }
+      document.getElementById("loggedOut").style.display = 'none';
+    }, 3000) */
+  }
 }

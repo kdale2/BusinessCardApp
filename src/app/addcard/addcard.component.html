@@ -1,50 +1,68 @@
+<!-- This form needs to be fixed. Followed some kind of tutorial
+     and many of the tags are unnecessary. Can simplify. -->
+
 <html>
 
-<head>
-</head>
+<head> </head>
 
 <body>
   <div class="container">
-    <h1>Please enter your card information:</h1><br>
+    <h1>Please enter your business card information:</h1>
+    <br />
+
     <div class="formFormat">
-      <label for="name">First Name: </label>
-      <input type="text"  #firstNameInput class="form-control" id = "first">
+      <label for="first">First Name: </label>
+      <input type="text" #firstNameInput class="form-control" id="first" />
     </div>
 
     <div class="formFormat">
-      <label for="name">Last Name: </label>
-      <input type="text"  #lastNameInput class="form-control" id = "last">
+      <label for="last">Last Name: </label>
+      <input type="text" #lastNameInput class="form-control" id="last" />
     </div>
 
     <div class="formFormat">
       <label for="company">Company: </label>
-      <input type="text" #companyInput class="form-control" id="company">
+      <input type="text" #companyInput class="form-control" id="company" />
     </div>
 
     <div class="formFormat">
       <label for="position">Position: </label>
-      <input type="text" #positionInput class="form-control" id="position">
+      <input type="text" #positionInput class="form-control" id="position" />
     </div>
 
     <div class="formFormat">
       <label for="address">Address: </label>
-      <input type="text" #addressInput class="form-control" id="address">
+      <input type="text" #addressInput class="form-control" id="address" />
     </div>
 
     <div class="formFormat">
-      <label for="phone">Phone #: </label>
-      <input type="text" #phoneInput class="form-control" id="phoneNumber">
+      <label for="phoneNumber">Phone #: </label>
+      <input type="text" #phoneInput class="form-control" id="phoneNumber" />
     </div>
 
-    <br>
-    <button type="submit" class="btn btn-success" (click)='addCard(firstNameInput.value, lastNameInput.value, companyInput.value, positionInput.value, 
-      addressInput.value, phoneInput.value)'>
-      Add to List</button>
+    <br />
+    <button type="submit" class="btn btn-success" (click)="
+          addCard(
+            firstNameInput.value,
+            lastNameInput.value,
+            companyInput.value,
+            positionInput.value,
+            addressInput.value,
+            phoneInput.value
+          )
+        ">
+      Add to List
+    </button>
 
-    <br><br>
-    <p id = "success">Card has been added successfully. Navigate to your dashboard to view.</p>
-  
-  </div>
+    <br /><br />
+    <ng-container *ngIf="success">
+      <p>
+      Card has been added successfully. Navigate to your dashboard to view.
+      </p>
+    </ng-container>
+
+    </div>
+
 </body>
 
 </html>

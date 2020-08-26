@@ -19,46 +19,18 @@
                                         <p>{{card.payload.doc.data().address}}</p>
                                         <p>{{card.payload.doc.data().phone}}</p>
                                 </article>
-                                <button (click)='deleteCard(card, card.payload.doc.id)'>Delete card</button> 
+                                <button (click)='deleteCard(card, card.payload.doc.id)'>Delete</button> 
                                 <button (click)="toggle(card, card.payload.doc.id)">Update</button>
-
-                                <!-- <ng-container *ngIf="show">
-                                        <div style="margin: 0 auto;text-align: left;">
-
-                                                <div class="formFormat">
-                                                        <label>First Name:</label>
-                                                        <input type="text" #firstNameInput name="firstName" />
-                                                </div>
-                                                <div class="formFormat">
-                                                        <label>Last Name:</label>
-                                                        <input type="text" #lastNameInput name="lastName" />
-                                                </div>
-                                                <div class="formFormat">
-                                                        <label>Organization:</label>
-                                                        <input type="text" #companyInput name="company" />
-                                                </div>
-                                                <div class="formFormat">
-                                                        <label>Position:</label>
-                                                        <input type="text" #positionInput name="position" />
-                                                </div>
-                                                <div class="formFormat">
-                                                        <label>Address:</label>
-                                                        <input type="text" #addressInput name="address" />
-                                                </div>
-                                                <div class="formFormat">
-                                                        <label>Phone:</label>
-                                                        <input type="text" #phoneInput name="phone" />
-                                                </div>
-                                                <button (click)='update(card, card.payload.doc.id, firstNameInput.value, lastNameInput.value, companyInput.value, positionInput.value, 
-                  addressInput.value, phoneInput.value)'>Submit changes</button> <br>
-                                        </div>
-                                </ng-container> -->
                         </ul>
                 </section>
         </div>
 
+
+        
+        <!-- Needs work to display underneath card that is being updated -->
         <div class = "update">
         <ng-container *ngIf="show">
+                
                 <div style="margin: 5px;">
                         <h1>Update this card:</h1><br>
                         <div class="formFormat">
@@ -86,7 +58,10 @@
                                 <input type="text" #phoneInput id="phone" value="{{this.businessCard.payload.doc.data().phone}}"/>
                         </div>
                         <button (click)='update(businessCard, businessCard.payload.doc.id, firstNameInput.value, lastNameInput.value, companyInput.value, positionInput.value, 
-addressInput.value, phoneInput.value)'>Submit changes</button> <br>
+addressInput.value, phoneInput.value)'>Submit changes</button> 
+                        <button (click) = 'toggle(businessCard, businessCard.payload.doc.id)'>Cancel</button>
+
+<br>
                 </div>
         </ng-container>
         </div>

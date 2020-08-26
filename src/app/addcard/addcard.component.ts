@@ -12,15 +12,17 @@ import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
 export class AddcardComponent implements OnInit {
 
   display = 'none';
-
   businessCard: BusinessCardComponent;
+  success:boolean = false;
 
   constructor(private busCardService: BusinessCardService) { }
 
   ngOnInit() {
   }
 
-  addCard(firstNameInput: string, lastNameInput: string, companyInput: string, positionInput: string, addressInput: string, phoneInput: string) {
+  addCard(firstNameInput: string, lastNameInput: string, companyInput: string, 
+    positionInput: string, addressInput: string, phoneInput: string) {
+
     this.businessCard = new BusinessCardComponent(firstNameInput, lastNameInput, companyInput,positionInput, addressInput, phoneInput);
     this.busCardService.createBusinessCard(this.businessCard);
 
@@ -43,12 +45,19 @@ export class AddcardComponent implements OnInit {
     let inputValue6 = (<HTMLInputElement>document.getElementById("phoneNumber"));
     inputValue6.value = '';
 
-    // add success message when card has been added
-    let p = document.getElementById("success");
-    p.style.visibility = "visible";
+    this.success = true;
+
+    //refresh page/form
+    setTimeout(() => {
+        this.success = false;
+    }, 4000);
+
+/*     // add success message when card has been added
+    let successMsg = document.getElementById("success");
+    successMsg.style.visibility = "visible";
     setTimeout(function () {
-          document.getElementById("success").style.display='none';
-      }, 3000)
+          successMsg.style.display='none';
+      }, 3000) */
     
   }
 

@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Please enter your credentials:</h1>
+    <div class="formFormat">
+        <label for="id">Email Address: </label>
+        <input type="text" #emailInput class="form-control" name="id">
+    </div>
+
+    <div class="formFormat">
+        <label for="description">Password: </label>
+        <input type="password" onfocus="this.value=''" #passwordInput class="form-control" id="description">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success" (click)='tryRegister(emailInput.value, passwordInput.value)'>
+        Register</button>
+
+</div>

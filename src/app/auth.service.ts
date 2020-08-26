@@ -25,7 +25,10 @@ export class AuthService {
         (user) => {
           if (user) {
             this.userDetails = user;
-            console.log(this.userDetails);
+            //console.log(this.userDetails);
+            console.log("This user id: " + this.userDetails.uid);
+            console.log("Current user email: " + this.userDetails.email);
+
           }
           else {
             this.userDetails = null;
@@ -35,6 +38,8 @@ export class AuthService {
 }
 
 SignIn(email: string, password: string) {
+
+  console.log("in sign in method");
 
   this.afAuth
     .auth
@@ -67,4 +72,15 @@ isLoggedIn() {
       this.router.navigate(['login']);
   });
 }
+
+  //setting up a method to allow users to register
+  async SignUp(email, password) {
+    try {
+      const result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      console.log("This result is " + result.user.email);
+    }
+    catch (error) {
+      window.alert(error.message);
+    }
+  }
 }

@@ -1,19 +1,14 @@
-.intro {
+.footer {
     background-color: #94b7f7;
-    width: 500px;
-    margin: 35px;
-    font-size: 20px;
-    border-style: solid;
-    padding: 15px;
 }
 
 .more {
     background-color: #60cac5;
-    width: 500px;
-    margin: 35px;
-    font-size: 20px;
-    border-style: solid;
-    padding: 15px;
+
+}
+
+.title {
+    background-color: #94b7f7;
 }
 
 div {
@@ -21,4 +16,11 @@ div {
     border-style: solid;
     border-width: medium;
     border-color: rgb(100, 98, 98);
+    text-align: center;    
+    width: 50%;    
+    margin: 10px auto 10px auto;
+    font-size: 20px;
+    border-style: solid;
+    padding: 15px;
+
 }

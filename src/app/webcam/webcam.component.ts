@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
 import { CloudvisionService } from '../cloudvision.service';
 
 
-
 @Component({
   selector: 'app-webcam',
   templateUrl: './webcam.component.html',
@@ -20,6 +19,7 @@ export class WebcamComponent implements OnInit {
 
     businessCard: BusinessCardComponent;
     busCardService: BusinessCardService;
+    addingCard:boolean = false;
 
     // toggle webcam on/off
     public showWebcam = true;
@@ -39,6 +39,7 @@ export class WebcamComponent implements OnInit {
 
     base64: string;
     imageUrl;
+
 
     private URL = `https://vision.googleapis.com/v1/images:annotate?key=${environment.cloudVisionKey}`;
 
@@ -63,6 +64,8 @@ export class WebcamComponent implements OnInit {
   }
 
   public triggerSnapshot(): void {
+    this.addingCard = true;
+
     this.trigger.next();
   }
 
@@ -85,7 +88,6 @@ export class WebcamComponent implements OnInit {
   }
 
   public handleImage(webcamImage: WebcamImage): void {
-    console.log('received webcam image', webcamImage);
     this.webcamImage = webcamImage;
     this.imageUrl = webcamImage.imageAsDataUrl;
   }
@@ -114,12 +116,12 @@ export class WebcamComponent implements OnInit {
 
   public save(){
     console.log("Saving picture"); 
-    console.log(this.imageUrl);
+    //console.log(this.imageUrl);
 
     this.convertToBase64();
     const parsedImage = this.imageUrl.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
 
-    console.log("Converted to base 64");
+    //console.log("Converted to base 64");
     const payload: any = {
       'requests': [
         {
@@ -136,10 +138,14 @@ export class WebcamComponent implements OnInit {
       ]
     }
     this.cloudvision.postRequest(payload);
+    
+
+
+
   }
 
   convertToBase64() {
-    console.log("Coverting to base 64");
+    //console.log("Converting to base 64");
     const imgNode = document.getElementById('image');
 
     //const image = document.createElement('img');

@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CloudvisionService } from './cloudvision.service';
 import { AddcardComponent } from './addcard/addcard.component';
 import { ReadmeComponent } from './readme/readme.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ReadmeComponent } from './readme/readme.component';
     WebcamComponent,
     NavbarComponent,
     AddcardComponent,
-    ReadmeComponent
+    ReadmeComponent,
+    RegisterComponent
   ],
   imports: [
     WebcamModule,

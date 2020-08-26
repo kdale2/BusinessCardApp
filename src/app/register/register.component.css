@@ -8,13 +8,3 @@ button {
     margin-right: 5px;
     background-color: rgb(92, 143, 238)
 }
-
-#loggedOut {
-    visibility: hidden;
-}
-
-#test {
-    visibility: hidden;
-}
-
-

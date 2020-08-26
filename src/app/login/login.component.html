@@ -2,28 +2,35 @@
 <div class="container">
   <br><br>
   <h1>Please sign in:</h1>
-  <div class="formFormat">
-    <label for="id">Email Address: </label>
-    <input type="text" #emailInput class="form-control" name="id">
-  </div>
 
-  <div class="formFormat">
-    <label for="description">Password: </label>
-    <input type="password" onfocus="this.value=''" #passwordInput class="form-control" id="description">
+  <form class="signInForm">
+    <div class="formFormat">
+      <label for="id">Email Address: </label>
+      <input type="text" #emailInput class="form-control" name="id">
+    </div>
+
+    <div class="formFormat">
+      <label for="description">Password: </label>
+      <input type="password" onfocus="this.value=''" #passwordInput class="form-control" id="description">
+    </div>
+    <br>
+    <button type="button" class="btn btn-success" (click)='signIn(emailInput.value, passwordInput.value)'>
+      Login</button>
+
+    <button type="button" class="btn btn-success" (click)='signOut()'>
+      Logout</button> <br><br>
+  </form>
+
+  <div class = "signup">
+    <a href = "/register"><button class="btn btn-success">Register new user</button></a>
+
   </div>
   <br>
-  <button type="submit" class="btn btn-success" (click)='signIn(emailInput.value, passwordInput.value)'>
-    Login</button>
 
-  <button type="submit" class="btn btn-success" (click)='signOut()'>
-    Logout</button> <br><br>
-
-
-  <!-- The below line is always displayed when logged in
-  <p id = "loggedIn">You are currently: Logged In.</p> -->
-
-  <p id = "loggedOut">You have successfully logged out. Please login to continue.</p>
-
+  <!-- <p id="loggedOut">You have successfully logged out. Please login to continue.</p> -->
+  <ng-container *ngIf = "loggedOut">
+    <p>Successful log out.</p>
+  </ng-container> 
 </div>
-</html>
 
+</html>
